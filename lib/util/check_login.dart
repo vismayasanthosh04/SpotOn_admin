@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:spoton_admin/loginpage.dart';
+import 'package:spoton_admin/features/login/loginpage.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 void checkLogin(BuildContext context) {

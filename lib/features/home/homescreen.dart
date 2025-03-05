@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:spoton_admin/dashboard.dart';
-import 'package:spoton_admin/loginpage.dart';
+import 'package:spoton_admin/features/dashboard/dashboard.dart';
+import 'package:spoton_admin/features/login/loginpage.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
