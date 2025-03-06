@@ -72,9 +72,8 @@ class DashboardCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      foregroundDecoration: BoxDecoration(
-          border: Border.all(color: const Color(0xFF00A36C)),
-          borderRadius: const BorderRadius.all(Radius.circular(15))),
+      foregroundDecoration: const BoxDecoration(
+          borderRadius: BorderRadius.all(Radius.circular(15))),
       decoration: const BoxDecoration(
           color: Color(0xFF7F00FF),
           borderRadius: BorderRadius.all(Radius.circular(15))),

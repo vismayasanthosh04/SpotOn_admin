@@ -52,6 +52,7 @@ class _HomeScreenState extends State<HomeScreen>
                     setState(() {});
                   },
                 ),
+                const SizedBox(height: 20.0),
                 DrawerItemButton(
                   inverse: _tabController.index == 1,
                   iconData: Icons.car_repair,
@@ -61,6 +62,7 @@ class _HomeScreenState extends State<HomeScreen>
                     setState(() {});
                   },
                 ),
+                const SizedBox(height: 20.0),
                 DrawerItemButton(
                   inverse: _tabController.index == 2,
                   iconData: Icons.local_parking_sharp,
@@ -70,6 +72,7 @@ class _HomeScreenState extends State<HomeScreen>
                     setState(() {});
                   },
                 ),
+                const SizedBox(height: 20.0),
                 DrawerItemButton(
                   inverse: false,
                   onTap: () {
@@ -144,27 +147,31 @@ class DrawerItemButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: inverse ? const Color(0xFFE7EEE7) : Colors.black,
-      child: InkWell(
-        onTap: onTap,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-          child: Row(
-            children: [
-              Icon(
-                iconData,
-                color: inverse ? const Color(0xFF7F00FF) : Colors.white,
-              ),
-              const SizedBox(
-                width: 10,
-              ),
-              Text(
-                label,
-                style: TextStyle(
-                    color: inverse ? const Color(0xFF7F00FF) : Colors.white),
-              ),
-            ],
+    return InkWell(
+      onTap: onTap,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        child: Material(
+          borderRadius: BorderRadius.circular(20),
+          color: inverse ? const Color(0xFFFFFFFF) : Colors.black,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+            child: Row(
+              children: [
+                Icon(
+                  iconData,
+                  color: inverse ? const Color(0xFF7F00FF) : Colors.white,
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                Text(
+                  label,
+                  style: TextStyle(
+                      color: inverse ? const Color(0xFF7F00FF) : Colors.white),
+                ),
+              ],
+            ),
           ),
         ),
       ),

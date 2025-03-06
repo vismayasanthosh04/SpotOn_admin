@@ -47,77 +47,84 @@ class _LoginScreenState extends State<LoginScreen> {
         },
         builder: (context, state) {
           return Row(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               Expanded(
+                  flex: 2,
                   child: Container(
-                height: 800,
-                width: 400,
-                color: Colors.black,
-                child: const Image(
-                  image: NetworkImage(
-                      'https://t4.ftcdn.net/jpg/12/14/07/63/240_F_1214076346_IP3vmKVr1c5M6FVxPktpLRj7k7pyLPqn.jpg'),
-                  fit: BoxFit.contain,
-                ),
-              )),
+                    color: Colors.black,
+                    child: const Image(
+                      image: AssetImage(
+                          'assets/max-ilienerwise-jmZ2q_k-dAE-unsplash.jpg'),
+                      fit: BoxFit.cover,
+                    ),
+                  )),
               Expanded(
                 child: Container(
                   color: Colors.black,
                   child: Form(
                     key: _formKey,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Center(
-                            child: Text(
-                          'SpotOn',
-                          style: TextStyle(
-                              fontSize: 50.0, color: Color(0xFF7F00FF)),
-                          textAlign: TextAlign.center,
-                        )),
-                        const SizedBox(
-                          height: 50,
-                        ),
-                        CustomTextFormField(
-                            labelText: 'Email',
-                            controller: _emailController,
-                            validator: emailValidator),
-                        const SizedBox(
-                          height: 15,
-                        ),
-                        CustomTextFormField(
-                            labelText: 'Password',
-                            controller: _passwordController,
-                            validator: notEmptyValidator),
-                        SizedBox(
-                          width: 400,
-                          child: Align(
-                            alignment: Alignment.bottomLeft,
-                            child: TextButton(
-                                onPressed: () {},
-                                child: const Text(
-                                  'Forgot password?',
-                                  style: TextStyle(
-                                      fontSize: 15.0, color: Color(0xFF7F00FF)),
-                                )),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 60),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            'SpotOn',
+                            style: TextStyle(
+                                fontSize: 50.0,
+                                color: Color(0xFF7F00FF),
+                                fontWeight: FontWeight.bold),
+                            textAlign: TextAlign.center,
                           ),
-                        ),
-                        const SizedBox(
-                          height: 30.0,
-                        ),
-                        CustomButton(
-                          onPressed: () {
-                            if (_formKey.currentState!.validate()) {
-                              BlocProvider.of<LoginBloc>(context).add(
-                                LoginEvent(
-                                  email: _emailController.text.trim(),
-                                  password: _passwordController.text.trim(),
-                                ),
-                              );
-                            }
-                          },
-                          label: 'Login',
-                        )
-                      ],
+                          const SizedBox(
+                            height: 50,
+                          ),
+                          const Text(
+                            'Email',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          const SizedBox(
+                            height: 15,
+                          ),
+                          CustomTextFormField(
+                              labelText: 'Email',
+                              controller: _emailController,
+                              validator: emailValidator),
+                          const SizedBox(
+                            height: 15,
+                          ),
+                          const Text(
+                            'Password',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          const SizedBox(
+                            height: 15,
+                          ),
+                          CustomTextFormField(
+                              labelText: 'Password',
+                              controller: _passwordController,
+                              validator: notEmptyValidator),
+                          const SizedBox(
+                            height: 30.0,
+                          ),
+                          CustomButton(
+                            inverse: true,
+                            onPressed: () {
+                              if (_formKey.currentState!.validate()) {
+                                BlocProvider.of<LoginBloc>(context).add(
+                                  LoginEvent(
+                                    email: _emailController.text.trim(),
+                                    password: _passwordController.text.trim(),
+                                  ),
+                                );
+                              }
+                            },
+                            label: 'Login',
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ),

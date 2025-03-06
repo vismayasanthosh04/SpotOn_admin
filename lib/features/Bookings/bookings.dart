@@ -1,6 +1,7 @@
 import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
 import 'package:spoton_admin/common_widget/custom_search.dart';
+import 'package:spoton_admin/features/Bookings/booking_detail_screen.dart';
 
 class Bookings extends StatefulWidget {
   const Bookings({super.key});
@@ -97,7 +98,14 @@ class _BookingsState extends State<Bookings> {
                         DataCell(Text(booking['timePeriod']!)),
                         DataCell(
                           TextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        const BookingDetailScreen(),
+                                  ));
+                            },
                             child: const Text('View Details'),
                           ),
                         ),
