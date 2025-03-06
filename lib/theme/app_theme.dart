@@ -11,7 +11,7 @@ const Color cardBorderColor = Color(0xFFD8D8D8);
 const Color cardFocusBorderColor = Color.fromARGB(255, 203, 203, 203);
 const Color iconColor = Color(0xFF566273);
 // Primary color (Blue): Used for key interactive elements like buttons, links, and selected states
-const Color primaryColor = Color(0xFFff7c09);
+const Color primaryColor = Color(0xFF7F00FF);
 const Color secondaryColor = Color(0xFF4EB429);
 
 // Tertiary color (Gray): Used for less important UI elements like disabled states or subtle details

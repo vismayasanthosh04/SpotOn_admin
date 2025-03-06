@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:spoton_admin/common_widget/custom_alert_dialog.dart';
 import 'package:spoton_admin/features/Bookings/bookings.dart';
 import 'package:spoton_admin/features/dashboard/dashboard.dart';
 import 'package:spoton_admin/features/login/loginpage.dart';
 import 'package:spoton_admin/features/parking_space/parking_space.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -69,40 +71,27 @@ class _HomeScreenState extends State<HomeScreen>
                   },
                 ),
                 DrawerItemButton(
-                  inverse: _tabController.index == 3,
-                  iconData: Icons.report,
-                  label: 'Reports',
-                  onTap: () {
-                    _tabController.animateTo(3);
-                    setState(() {});
-                  },
-                ),
-                DrawerItemButton(
-                  inverse: _tabController.index == 4,
-                  iconData: Icons.report_problem_outlined,
-                  label: 'Problems',
-                  onTap: () {
-                    _tabController.animateTo(4);
-                    setState(() {});
-                  },
-                ),
-                DrawerItemButton(
-                  inverse: _tabController.index == 5,
-                  iconData: Icons.pending_actions_sharp,
-                  label: 'Roles & Permissions',
-                  onTap: () {
-                    _tabController.animateTo(5);
-                    setState(() {});
-                  },
-                ),
-                const Spacer(),
-                DrawerItemButton(
                   inverse: false,
                   onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const LoginScreen()),
+                    showDialog(
+                      context: context,
+                      builder: (context) => CustomAlertDialog(
+                        title: "LOG OUT",
+                        content: const Text(
+                          "Are you sure you want to log out? Clicking 'Logout' will end your current session and require you to sign in again to access your account.",
+                        ),
+                        width: 400,
+                        primaryButton: "LOG OUT",
+                        onPrimaryPressed: () {
+                          Supabase.instance.client.auth.signOut();
+                          Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const LoginScreen(),
+                              ),
+                              (route) => false);
+                        },
+                      ),
                     );
                   },
                   iconData: Icons.logout,
@@ -121,7 +110,7 @@ class _HomeScreenState extends State<HomeScreen>
               children: [
                 const Dashboard(),
                 const Bookings(),
-                ParkingSpace(),
+                const ParkingSpace(),
                 Container(
                   color: Colors.red,
                 ),

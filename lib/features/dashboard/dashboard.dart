@@ -110,13 +110,6 @@ class DashboardCard extends StatelessWidget {
                 )
               ],
             ),
-            const Spacer(),
-            TextButton(
-                onPressed: () {},
-                child: const Text(
-                  'More Info ->',
-                  style: TextStyle(fontSize: 18, color: Colors.white),
-                ))
           ],
         ),
       ),
