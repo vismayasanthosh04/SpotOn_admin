@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:spoton_admin/features/Bookings/bookings.dart';
 import 'package:spoton_admin/features/dashboard/dashboard.dart';
 import 'package:spoton_admin/features/login/loginpage.dart';
+import 'package:spoton_admin/features/parking_space/parking_space.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -22,7 +24,7 @@ class _HomeScreenState extends State<HomeScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white,
       body: Row(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
@@ -31,14 +33,14 @@ class _HomeScreenState extends State<HomeScreen>
             color: Colors.black,
             child: Column(
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 60.0,
                 ),
-                Text(
+                const Text(
                   'SpotOn',
                   style: TextStyle(fontSize: 25, color: Color(0xFF7F00FF)),
                 ),
-                SizedBox(height: 80.0),
+                const SizedBox(height: 80.0),
                 DrawerItemButton(
                   inverse: _tabController.index == 0,
                   iconData: Icons.dashboard,
@@ -51,7 +53,7 @@ class _HomeScreenState extends State<HomeScreen>
                 DrawerItemButton(
                   inverse: _tabController.index == 1,
                   iconData: Icons.car_repair,
-                  label: 'Booking',
+                  label: 'Bookings',
                   onTap: () {
                     _tabController.animateTo(1);
                     setState(() {});
@@ -93,19 +95,20 @@ class _HomeScreenState extends State<HomeScreen>
                     setState(() {});
                   },
                 ),
-                Spacer(),
+                const Spacer(),
                 DrawerItemButton(
                   inverse: false,
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => LoginScreen()),
+                      MaterialPageRoute(
+                          builder: (context) => const LoginScreen()),
                     );
                   },
                   iconData: Icons.logout,
                   label: "Log out",
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
               ],
@@ -113,16 +116,12 @@ class _HomeScreenState extends State<HomeScreen>
           ),
           Expanded(
             child: TabBarView(
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               controller: _tabController,
               children: [
-                Dashboard(),
-                Container(
-                  color: Colors.yellow,
-                ),
-                Container(
-                  color: Colors.green,
-                ),
+                const Dashboard(),
+                const Bookings(),
+                ParkingSpace(),
                 Container(
                   color: Colors.red,
                 ),
@@ -157,7 +156,7 @@ class DrawerItemButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: inverse ? Color(0xFFE7EEE7) : Colors.black,
+      color: inverse ? const Color(0xFFE7EEE7) : Colors.black,
       child: InkWell(
         onTap: onTap,
         child: Padding(
@@ -166,15 +165,15 @@ class DrawerItemButton extends StatelessWidget {
             children: [
               Icon(
                 iconData,
-                color: inverse ? Color(0xFF7F00FF) : Colors.white,
+                color: inverse ? const Color(0xFF7F00FF) : Colors.white,
               ),
-              SizedBox(
+              const SizedBox(
                 width: 10,
               ),
               Text(
                 label,
                 style: TextStyle(
-                    color: inverse ? Color(0xFF7F00FF) : Colors.white),
+                    color: inverse ? const Color(0xFF7F00FF) : Colors.white),
               ),
             ],
           ),

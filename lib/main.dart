@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:spoton_admin/features/login/loginpage.dart';
+import 'package:spoton_admin/features/home/homescreen.dart';
 import 'package:spoton_admin/theme/app_theme.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: appTheme,
-      home: const LoginScreen(),
+      home: const HomeScreen(),
     );
   }
 }
